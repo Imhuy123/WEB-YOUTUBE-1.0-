@@ -28,7 +28,7 @@ function Header({ isDarkMode, toggleDarkMode }) {
 
   useEffect(() => {
     // Fetch URL đăng nhập Google
-    fetch('/api/auth/google/url', { headers: new Headers({ accept: 'application/json' }) })
+    fetch('https://huynas123.synology.me/api/auth/google/url', { headers: new Headers({ accept: 'application/json' }) })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -46,8 +46,9 @@ function Header({ isDarkMode, toggleDarkMode }) {
 
   return (
     <div>
+      <div  className='px-4 py-2'></div>
       {/* Sử dụng 'fixed' để cố định header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 flex flex-col py-3 shadow-md justify-between px-4 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black' }`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 flex flex-col py-1 shadow-md justify-between px-4 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black' }`}>
         {/* Logo và Menu */}
         <div className="flex items-center justify-between">
           <div className="flex items-center">

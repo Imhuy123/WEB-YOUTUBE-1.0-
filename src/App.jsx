@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import Header from './component/Header';
-import Body from './component/Body';
-import Footer from './component/Footer';
-import LoginGoogle from './component/header/LoginGoogle';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './Home'
+import LoginGoogle from './component/header/LoginGoogle';
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -15,15 +13,14 @@ export default function App() {
   return (
     <div className={isDarkMode ? 'dark' : 'light'}>
       <Router>
-        {/* Truyền state và hàm toggleDarkMode xuống các component */}
-        <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-
         <Routes>
-          <Route exact path="/" element={<Body isDarkMode={isDarkMode} />} />
+          {/* Định nghĩa route cho HomePage */}
+          <Route exact path="/" element={<HomePage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
+          <Route exact path="/home" element={<HomePage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
+
+          {/* Định nghĩa route cho LoginGoogle */}
           <Route exact path="/auth/google" element={<LoginGoogle />} />
         </Routes>
-
-        <Footer />
       </Router>
     </div>
   );
